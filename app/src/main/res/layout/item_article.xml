@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+<variable
+    name="result"
+    type="com.khadija.nyarticles.datalayer.entities.Results" />
+        <variable
+            name="clickInterface"
+            type="com.khadija.nyarticles.ui.ArticleClicks" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:onClick="@{()->clickInterface.click(result)}"
+        >
+<de.hdodenhof.circleimageview.CircleImageView
+    android:id="@+id/article_image"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_marginStart="16dp"
+    android:background="@drawable/circle_img"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    imageMedia="@{result.media}"
+    />
+        <TextView
+            android:id="@+id/article_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/article_image"
+            app:layout_constraintEnd_toStartOf="@id/details_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            android:lines="2"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:text="@{result.title}"
+            />
+        <TextView
+            android:id="@+id/article_author"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/article_image"
+            app:layout_constraintEnd_toStartOf="@id/article_date"
+            app:layout_constraintTop_toBottomOf="@id/article_title"
+            android:lines="2"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:textSize="14sp"
+            android:text="@{result.byline}"
+            />
+        <TextView
+            android:id="@+id/article_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/details_btn"
+            app:layout_constraintBottom_toBottomOf="@id/article_author"
+            android:drawableStart="@drawable/ic_calendar"
+            android:drawablePadding="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="14sp"
+            android:text="@{result.published_date}"
+            />
+
+      <ImageView
+          android:id="@+id/details_btn"
+          android:layout_width="35dp"
+          android:layout_height="match_parent"
+          android:src="@drawable/ic_arrow"
+
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintBottom_toBottomOf="parent"
+          />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

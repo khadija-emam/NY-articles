@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.khadija.nyarticles.ui.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleViewFragment"
+        android:name="com.khadija.nyarticles.ui.articleview.ArticleViewFragment"
+        android:label="ArticleViewFragment" >
+        <argument
+            android:name="article"
+            app:nullable="false"
+            app:argType="com.khadija.nyarticles.datalayer.entities.Results" />
+    </fragment>
+</navigation>
